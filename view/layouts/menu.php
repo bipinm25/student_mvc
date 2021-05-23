@@ -2,16 +2,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">	
       <li class="nav-item active">
-        <a class="nav-link" href="">Registration</a>
+        <a class="nav-link" href="/">Student List</a>
       </li>
 	        <li class="nav-item active">
-        <a class="nav-link" href="">Course</a>
+        <a class="nav-link" href="/course">Course</a>
       </li>
 	  <li class="nav-item active">
-        <a class="nav-link" href="">Subscribe Course</a>
+        <a class="nav-link" href="/subscribe-course">Subscribe Course</a>
       </li>
 	  <li class="nav-item active">
-        <a class="nav-link" href="">Report</a>
+        <a class="nav-link" href="/report">Report</a>
       </li>
            
     </ul>    

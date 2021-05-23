@@ -1,0 +1,15 @@
+{
+    "name": "bipin/student_portal",
+    "authors": [
+        {
+            "name": "bipinm25",
+            "email": "bipinm25@gmail.com"
+        }
+    ],
+	"autoload": {
+		"psr-4":{
+			"app\\": "./"
+		}
+	},
+    "require": {}
+}
