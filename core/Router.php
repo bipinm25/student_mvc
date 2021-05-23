@@ -15,9 +15,13 @@ class Router{
         $this->response = $response;
     }
 
-    public function get($path,$callback){
+    public function get($path, $callback){
             $this->routers['get'][$path] = $callback;
     }
+
+    public function post($path, $callback){
+        $this->routers['post'][$path] = $callback;
+}
 
     public function resolve(){
        $path =  $this->request->getPath();
@@ -32,14 +36,17 @@ class Router{
        if(is_string($callback)){
            return $this->renderView($callback);
        }
-       return call_user_func($callback);
+       if(is_array($callback)){
+           $callback[0] = new $callback[0]();
+       }
+
+       return call_user_func($callback, $this->request);
     }
 
-    public function renderView($view){       
+    public function renderView($view, $params = []){   
         $layout = $this->setLayout();
-        $body = $this->renderHtml($view);      
-
-       return str_replace('{{html_content}}', $body, $layout);        
+        $body = $this->renderHtml($view, $params);
+        return str_replace('{{html_content}}', $body, $layout);        
     }
 
     protected function setLayout(){
@@ -48,7 +55,11 @@ class Router{
         return ob_get_clean();
     }
 
-    protected function  renderHtml($view){
+    protected function  renderHtml($view, $params){
+        //var_dump($params);
+        foreach($params as $key => $val){
+            $$key = $val;
+        }
         ob_start();
         include_once Application::$ROOT_PATH."/view/$view.php";
         return ob_get_clean();
