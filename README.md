@@ -6,3 +6,5 @@
 - Create database and configure `db.php`
 - Import SQL Script from `db_script.sql`
 - Go to `Public` folder and run this command `php -S localhost:8080`
+- Open this in browser `http://localhost:8080`
+
