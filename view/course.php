@@ -18,21 +18,14 @@
     </tr>
   </thead>
   <tbody>
+  <?php foreach($data as $d){ ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>      
-      <td><a href="">Edit</a> &nbsp;<a href="">Delete</a></td>      
-    </tr> 
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>     
-      <td><a href="">Edit</a> &nbsp;<a href="">Delete</a></td>    
-    </tr> 
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>      
-      <td><a href="">Edit</a> &nbsp;<a href="">Delete</a></td>  
-    </tr>    
+        <th scope="row"><?=$d['id']?></th>
+        <td><?=$d['course_name']?></td>        
+        <td><a href="/add_course?id=<?=$d['id']?>">Edit</a> &nbsp;<a data-id="<?=$d['id']?>" href="javascript:;" class="delete">Delete</a></td>      
+    </tr>
+  <?php  } ?>         
   </tbody>
 </table>
 </div>
+<?=$pagination?>

@@ -24,9 +24,10 @@
         <th scope="row"><?=$d['id']?></th>
         <td><?=$d['first_name']?></td>
         <td><?=$d['last_name']?></td>
-        <td><a href="">Edit</a> &nbsp;<a href="">Delete</a></td>      
+        <td><a href="/registration?id=<?=$d['id']?>">Edit</a> &nbsp;<a data-id="<?=$d['id']?>" href="javascript:;" class="delete">Delete</a></td> 
     </tr>
   <?php  } ?>     
   </tbody>
 </table>
 </div>
+<?=$pagination?>

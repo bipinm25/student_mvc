@@ -6,6 +6,7 @@ use app\core\Model;
 
 class Student extends Model{
 
+    public $id = 0;
     public $first_name = '';
     public $last_name = '';
     public $dob = '';
@@ -17,6 +18,8 @@ class Student extends Model{
 
     public function tableColumns(): array  {
         return ['first_name', 'last_name', 'dob', 'contact_no'];        
-    }    
+    }
 
-}
+
+
+} 

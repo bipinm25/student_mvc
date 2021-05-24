@@ -11,6 +11,7 @@ class Application{
     public Request $request;    
     public Response $response;
     public Database $db;
+    public Pagination $pagination;
 
     public function __construct($root, $dbParams = []) {
 
@@ -21,7 +22,7 @@ class Application{
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);      
         $this->db = new Database($dbParams);
-        
+        $this->pagination = new Pagination();        
     }
 
     public function run(){

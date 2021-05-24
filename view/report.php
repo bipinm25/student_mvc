@@ -11,18 +11,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr>     
-      <td>Mark</td>
-      <td>Otto</td>        
-    </tr> 
-    <tr>     
-      <td>Mark</td>
-      <td>Otto</td>        
-    </tr> 
-    <tr>     
-      <td>Mark</td>
-      <td>Otto</td>        
-    </tr>    
+  <?php
+  if(isset($report_date)){
+    foreach($report_date as $r){
+      echo '<tr>     
+              <td>'.$r['full_name'].'</td>
+              <td>'.$r['course_name'].'</td>        
+            </tr>';
+    }
+  }
+  ?>   
   </tbody>
 </table>
 </div>
+<?=$pagination?>
