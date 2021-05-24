@@ -2,12 +2,9 @@
 
 namespace app\core;
 
-abstract class Model{
+abstract class Model{   
 
-    protected $where = array();
-
-    protected $pagination = '';
-    
+    protected $pagination = '';    
     protected $limit = 100;
     protected $url = '/';
     protected $page = 1;
@@ -103,7 +100,7 @@ abstract class Model{
             return $this->getLastinsertId();
 
         }catch(\PDOException $e){
-            echo 'Something went wrong';        
+            echo 'Something went wrong';
         }
     }
     
@@ -123,15 +120,18 @@ abstract class Model{
         }else{
             $col = implode(',', $columns);
         }
-       
-        $statement = $this->prepareQuery("select $col from $table");
-        $statement->execute();
-        $this->setPagination($statement->rowCount());
-        $limit = " limit $this->offset, $this->limit";
-        $statement = $this->prepareQuery("select $col from $table $limit");
-        $statement->execute();
-
-        return $statement->fetchAll();
+        
+        try{
+            $statement = $this->prepareQuery("select $col from $table");
+            $statement->execute();
+            $this->setPagination($statement->rowCount());
+            $limit = " limit $this->offset, $this->limit";
+            $statement = $this->prepareQuery("select $col from $table $limit");
+            $statement->execute();
+            return $statement->fetchAll();
+        }catch(\PDOException $e){
+            echo 'Something went wrong';        
+        }        
     }
       
 
@@ -148,11 +148,7 @@ abstract class Model{
             echo 'Something went wrong in the query';             
         }
     }
-
-
-    public function getRowCount(){
-        
-    }
+    
 
     public function setPagination($total_records){
         $this->pagination = Application::$app->pagination->getPagination($total_records, $this->limit, $this->url, $this->page);

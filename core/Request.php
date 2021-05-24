@@ -2,7 +2,13 @@
 
 namespace app\core;
 
-class Request{
+interface BaseRequest {
+    public function getPath();   
+    public function getMethod();
+    public function getData();
+}
+
+class Request implements BaseRequest{
 
     public function getPath(){
         $path = $_SERVER['REQUEST_URI'] ?? '/';
