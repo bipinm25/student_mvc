@@ -50,6 +50,7 @@ class CourseController extends Controller{
     }
 
     public function subscribeCourse(Request $request){
+        
         $data = $request->getData();
         $student = [];
         foreach($data['student_id'] as $k => $v){
@@ -68,9 +69,6 @@ class CourseController extends Controller{
         $course->delete("delete from course_subscribe where course_id = ? ", [$data['id']]);
         $res = $course->delete("delete from ".$course->tableName()." where id = ? ", [$data['id']]);
         return json_encode(['success' => $res]);
-
     }
-
-
     
 }
