@@ -12,7 +12,7 @@ class CourseController extends Controller{
         $re_data =  $request->getData();        
         $course = new Course();
         $course->initPagination(5, '/course', $re_data['page'] ?? 1);
-        $data = $course->fetchAll(['id', 'course_name']);        
+        $data = $course->fetchAll(['id', 'course_name']);   
         $pagination = $course->getPagination();          
         return $this->view('course', compact('data','pagination'));
     }

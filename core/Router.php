@@ -22,11 +22,7 @@ class Router{
     public function post($path, $callback){
         $this->routers['post'][$path] = $callback;
     }
-
-    public function delete($path, $callback){
-        $this->routers['delete'][$path] = $callback;
-    }
-
+    
     public function resolve(){
        $path =  $this->request->getPath();
        $method = $this->request->getMethod();       
@@ -44,7 +40,7 @@ class Router{
 
        if(is_array($callback)){
            $callback[0] = new $callback[0]();
-       }
+       }     
 
        return call_user_func($callback, $this->request);
     }

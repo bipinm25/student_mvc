@@ -2,7 +2,7 @@
 
 namespace app\core;
 
-abstract class Model{   
+abstract class Model{
 
     protected $pagination = '';    
     protected $limit = 100;

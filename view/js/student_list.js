@@ -1,7 +1,7 @@
 <script>
    $('.delete').on('click', function(e){
        var id = $(this).data('id');
-       if(confirm("Do you want to delete the student")){       
+       if(confirm("Do you want to delete the student?")){       
             $.ajax({
                 url:'/delete_student',
                 method:'post',
